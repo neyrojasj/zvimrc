@@ -6,13 +6,12 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified'] ]
+      \             [ 'readonly', 'filename', 'modified', 'girlfriend'] ]
+      \ },
+      \ 'component': {
+      \   'girlfriend': 'My girlfriend is the best!'
       \ },
       \ }
 
 " Remove the -- INSERT -- Bar, sicnce it is no needed
 set noshowmode
-
-if !has('gui_running')
-  set t_Co=256
-endif

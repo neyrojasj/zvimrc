@@ -16,7 +16,7 @@ install: .setup
 	cp -r vimrc.vim ${DST_FOLDER}/.vimrc
 	mkdir -p ${DST_FOLDER}/.zplugins
 	cp -r zplugins/* ${DST_FOLDER}/.zplugins/
-	vim +BundleInstall +qall
+	vim +'PlugInstall --sync' +qa	
 
 remove:
 	rm -rf ${DST_FOLDER}/.zplugins

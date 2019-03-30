@@ -13,9 +13,9 @@ make restore # Restore the last vimrc configuration"
 	touch .setup
 
 install: .setup
-	cp -ru --remove-destination vimrc.vim ${DST_FOLDER}/.vimrc
+	cp -r vimrc.vim ${DST_FOLDER}/.vimrc
 	mkdir -p ${DST_FOLDER}/.zplugins
-	cp -ru zplugins/* ${DST_FOLDER}/.zplugins/*
+	cp -r zplugins/* ${DST_FOLDER}/.zplugins/
 	vim +BundleInstall +qall
 
 remove:

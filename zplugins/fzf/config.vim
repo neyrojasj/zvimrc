@@ -5,6 +5,9 @@ map <Leader>/ :Files<CR>
 " Map the b character to buffers files
 map <Leader>. :Buffers<CR>
 
+" Map the double leader to opened buffers
+map <Leader><Leader> :History<CR>
+
 " Default fzf layout
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~30%' }

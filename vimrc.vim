@@ -54,9 +54,6 @@ source ~/.zplugins/vim-gitgutter/config.vim
 " ALE configuration
 source ~/.zplugins/ale/config.vim
 
-" indentLine configuration
-source ~/.zplugins/vim-indent-guides/config.vim
-
 " incsearch configuration
 source ~/.zplugins/incsearch/config.vim
 

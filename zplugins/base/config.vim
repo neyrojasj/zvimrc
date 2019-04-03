@@ -1,3 +1,7 @@
+" Enconding text
+scriptencoding utf-8
+set encoding=utf-8
+
 " Color schemes i liked
 " murphy, slate, koehler
 colorscheme slate

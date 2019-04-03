@@ -29,4 +29,16 @@ set spell
 map <F2> : w !pbcopy
 
 " turn hybrid line numbers on
-set number relativenumber
+" set number relativenumber
+set number
+
+" Highlight the searchs
+set hlsearch
+
+" Map a combination to delete text and send it to the null yank register
+
+" shortcut to delete in the black hole register
+vnoremap <leader>d "_d
+
+" shortcut to paste but keeping the current register
+vnoremap <leader>p "_dP

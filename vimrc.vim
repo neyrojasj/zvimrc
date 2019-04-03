@@ -24,6 +24,13 @@ Plug 'w0rp/ale'
 
 " Indent liner: Show lines per idepention
 Plug 'Yggdroot/indentLine'
+
+" incsearch plugin: Set the cursor into the search result
+" as you continue typing
+Plug 'haya14busa/incsearch.vim'
+
+" Plugin to copy to the clipboard
+Plug 'NLKNguyen/copy-cut-paste.vim'
 call plug#end()
 
 " Source the base and common configuration
@@ -49,3 +56,9 @@ source ~/.zplugins/ale/config.vim
 
 " indentLine configuration
 source ~/.zplugins/vim-indent-guides/config.vim
+
+" incsearch configuration
+source ~/.zplugins/incsearch/config.vim
+
+" copy-cut-paste configuration
+source ~/.zplugins/copy-cut-paste/config.vim

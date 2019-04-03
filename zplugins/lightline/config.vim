@@ -6,7 +6,7 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified', 'girlfriend'] ]
+      \             [ 'readonly', 'filename', 'modified']]
       \ },
       \ 'component': {
       \   'girlfriend': 'My girlfriend is the best!'

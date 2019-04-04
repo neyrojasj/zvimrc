@@ -46,3 +46,9 @@ vnoremap <leader>d "_d
 
 " shortcut to paste but keeping the current register
 vnoremap <leader>p "_dP
+
+" Shorcuts to handle tabs
+map <Leader>tn :tabnew<CR>
+map <Leader>tc :tabclose<CR>
+map <Leader>tf :tabNext<CR>
+map <Leader>tb :tabprevious<CR>

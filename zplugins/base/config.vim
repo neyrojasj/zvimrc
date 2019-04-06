@@ -52,3 +52,10 @@ map <Leader>tn :tabnew<CR>
 map <Leader>tc :tabclose<CR>
 map <Leader>tf :tabNext<CR>
 map <Leader>tb :tabprevious<CR>
+
+" Highlight the whole current line
+set cursorline
+hi cursorline cterm=none term=none
+autocmd WinEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+highlight CursorLine guibg=#303000 ctermbg=234

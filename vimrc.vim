@@ -3,8 +3,12 @@ let $PLUG_DIR = '$HOME/.zplugins/plugged'
 " PLUGING INSTALLATION
 """""""""""""""""""""""""""
 call plug#begin($PLUG_DIR)
+" Install airline plugin
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " Lightline plugin
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 
 " FZF plugin: Search files
 Plug 'junegunn/fzf'
@@ -29,15 +33,16 @@ Plug 'Yggdroot/indentLine'
 " as you continue typing
 Plug 'haya14busa/incsearch.vim'
 
-" Plugin to copy to the clipboard
-Plug 'NLKNguyen/copy-cut-paste.vim'
 call plug#end()
 
 " Source the base and common configuration
 source ~/.zplugins/base/config.vim
 
+" Airline plugin configuration
+source ~/.zplugins/vim-airline/config.vim
+
 " Lightline plugin configuration
-source ~/.zplugins/lightline/config.vim
+" source ~/.zplugins/lightline/config.vim
 
 " FZF plugin configuration
 source ~/.zplugins/fzf/config.vim
@@ -57,5 +62,5 @@ source ~/.zplugins/ale/config.vim
 " incsearch configuration
 source ~/.zplugins/incsearch/config.vim
 
-" copy-cut-paste configuration
-source ~/.zplugins/copy-cut-paste/config.vim
+" Deoplete configuration
+source ~/.zplugins/deoplete/config.vim

@@ -12,6 +12,10 @@ map <Leader><Leader> :History<CR>
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~30%' }
 
+" Set the hidden buffer mode, it allows leave opened buffers
+" in background
+set hidden
+
 " Customize fzf colors to match your color scheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],

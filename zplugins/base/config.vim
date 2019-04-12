@@ -26,8 +26,11 @@ autocmd BufWritePre * %s/\s\+$//e
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
-" Enable the spell word checking
-set spell
+" Enable spell checking for certain files
+au BufRead *.md setlocal spell
+au BufRead *.markdown setlocal spell
+au BufRead *.rst setlocal spell
+au BufRead *.ymal setlocal spell
 
 " Map the Ctrl + Shift + C to copy the selected text into the clipboard
 map <F2> : w !pbcopy

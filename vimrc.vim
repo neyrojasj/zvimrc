@@ -61,6 +61,3 @@ source ~/.zplugins/ale/config.vim
 
 " incsearch configuration
 source ~/.zplugins/incsearch/config.vim
-
-" Deoplete configuration
-source ~/.zplugins/deoplete/config.vim

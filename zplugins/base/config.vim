@@ -65,8 +65,8 @@ map <Leader>t7 7gt
 map <Leader>t8 8gt
 map <Leader>t9 9gt
 
-map <C-S-Left> :tabnext<CR>
-map <C-S-Right> :tabprevious<CR>
+map <C-S-Right> :tabnext<CR>
+map <C-S-Left> :tabprevious<CR>
 
 " Highlight the whole current line
 set cursorline

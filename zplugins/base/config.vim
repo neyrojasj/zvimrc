@@ -53,8 +53,20 @@ vnoremap <leader>p "_dP
 " Shorcuts to handle tabs
 map <Leader>tn :tabnew<CR>
 map <Leader>tc :tabclose<CR>
-map <Leader>tf :tabNext<CR>
+map <Leader>tf :tabnext<CR>
 map <Leader>tb :tabprevious<CR>
+map <Leader>t1 1gt
+map <Leader>t2 2gt
+map <Leader>t3 3gt
+map <Leader>t4 4gt
+map <Leader>t5 5gt
+map <Leader>t6 6gt
+map <Leader>t7 7gt
+map <Leader>t8 8gt
+map <Leader>t9 9gt
+
+map <C-S-Left> :tabnext<CR>
+map <C-S-Right> :tabprevious<CR>
 
 " Highlight the whole current line
 set cursorline

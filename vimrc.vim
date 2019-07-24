@@ -33,6 +33,9 @@ Plug 'Yggdroot/indentLine'
 " as you continue typing
 Plug 'haya14busa/incsearch.vim'
 
+" LaTeX plugin
+Plug 'lervag/vimtex'
+
 call plug#end()
 
 " Source the base and common configuration

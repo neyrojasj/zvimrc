@@ -33,8 +33,8 @@ Plug 'Yggdroot/indentLine'
 " as you continue typing
 Plug 'haya14busa/incsearch.vim'
 
-" LaTeX plugin
-Plug 'lervag/vimtex'
+" Search in all the proyect feature with CtrlSF
+Plug 'dyng/ctrlsf.vim'
 
 call plug#end()
 

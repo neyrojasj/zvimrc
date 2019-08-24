@@ -36,6 +36,11 @@ Plug 'haya14busa/incsearch.vim'
 " Search in all the proyect feature with CtrlSF
 Plug 'dyng/ctrlsf.vim'
 
+" Vim-CodeFmt: Autoformatter plugin
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+
 call plug#end()
 
 " Source the base and common configuration
@@ -64,3 +69,6 @@ source ~/.zplugins/ale/config.vim
 
 " incsearch configuration
 source ~/.zplugins/incsearch/config.vim
+
+" Vim-CodeFmt: Autoformatter plugin
+source ~/.zplugins/vim-codefmt/config.vim

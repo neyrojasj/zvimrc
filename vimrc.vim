@@ -41,6 +41,12 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 
+" Auto-close
+Plug 'vim-scripts/HTML-AutoCloseTag'
+
+" Emmet plugin for auto completing html abbreviations
+Plug 'mattn/emmet-vim'
+
 call plug#end()
 
 " Source the base and common configuration

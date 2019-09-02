@@ -11,7 +11,10 @@ let mapleader = ","
 
 " Map the character that are not seeing
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
-set list
+
+" Set list replaces the hidden characters by a special char
+" For example: the space is replaced by "·"
+" set list
 
 " Add mouse integration
 set mouse=a
@@ -22,9 +25,23 @@ set tabstop=2 shiftwidth=2 expandtab
 " Remove all trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
-" Color the 80th column
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" AUTOCOMPLETATION ENABLED
+" =============================================================================
+" To invoque this feature, type a base name and then: Ctrl+x and Ctrl+o
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+" MARK MAX COLUMN LENGHT
+" =============================================================================
+
+" Color the 80th column and over that column
+" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
+
+" Add only a line
+highlight ColorColumn ctermbg=magenta
+
+" =============================================================================
 
 " Enable spell checking for certain files
 au BufRead *.md setlocal spell
@@ -32,7 +49,7 @@ au BufRead *.markdown setlocal spell
 au BufRead *.rst setlocal spell
 au BufRead *.ymal setlocal spell
 
-" Map the Ctrl + Shift + C to copy the selected text into the clipboard
+" Map the Ctrl + Shift + C to copy the selected text into the dsads dsa dsd sd
 map <F2> : w !pbcopy
 
 " turn hybrid line numbers on

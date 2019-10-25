@@ -50,8 +50,12 @@ au BufRead *.markdown setlocal spell
 au BufRead *.rst setlocal spell
 au BufRead *.ymal setlocal spell
 
-" Map the Ctrl + Shift + C to copy the selected text into the dsads dsa dsd sd
-map <F2> : w !pbcopy
+" Map F2 to copy the selected text into the clipboard
+if hash('macunix')
+  map <F2> : w !pbcopy
+else
+  map <F2> : w !xclip -selection clipboard
+endif
 
 " turn hybrid line numbers on
 " set number relativenumber

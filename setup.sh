@@ -25,7 +25,11 @@ if [ ! -x "$(command -v yarn)" ]; then
   if [ "${MACHINE}" == "MAC" ]; then
     brew install yarn
   else
-    apt-get install yarn -y
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    apt-get update
+    apt-get install nodejs yarn xclip -y
   fi
 fi
 echo "Installing external plugins"

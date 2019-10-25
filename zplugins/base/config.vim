@@ -51,7 +51,7 @@ au BufRead *.rst setlocal spell
 au BufRead *.ymal setlocal spell
 
 " Map F2 to copy the selected text into the clipboard
-if hash('macunix')
+if has('macunix')
   map <F2> : w !pbcopy
 else
   map <F2> : w !xclip -selection clipboard

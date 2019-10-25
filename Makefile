@@ -1,6 +1,8 @@
 DST_FOLDER=${HOME}
 SOURCES := $(shell find . -name '*.vim')
 
+HASNVIM := $(shell command nvim --version 2> /dev/null)
+
 all: install
 
 # MAKE FILE RULE: INSTALL THE DEPENDCIES
@@ -14,11 +16,13 @@ all: install
 # ===========================================
 .install: .setup $(SOURCES)
 	cp -r vimrc.vim ${DST_FOLDER}/.vimrc
-	cp -r vimrc.vim ${DST_FOLDER}/.config/nvim/init.vim
 	mkdir -p ${DST_FOLDER}/.zplugins
 	cp -r zplugins/* ${DST_FOLDER}/.zplugins/
 	vim +'PlugInstall --sync' +qa
+ifdef HASNVIM
+	cp -r vimrc.vim ${DST_FOLDER}/.config/nvim/init.vim
 	nvim +'PlugInstall --sync' +qa
+endif
 	touch .install
 
 install: .install

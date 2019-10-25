@@ -3,12 +3,15 @@ let $PLUG_DIR = '$HOME/.zplugins/plugged'
 " PLUGING INSTALLATION
 """""""""""""""""""""""""""
 call plug#begin($PLUG_DIR)
+
 " Install airline plugin
+" It is a plugin that incorporates a status bar at the bottom
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Lightline plugin
-" Plug 'itchyny/lightline.vim'
+" Install the color palette
+Plug 'altercation/vim-colors-solarized'
+Plug 'gosukiwi/vim-atom-dark'
 
 " FZF plugin: Search files
 Plug 'junegunn/fzf'
@@ -19,6 +22,9 @@ Plug 'terryma/vim-multiple-cursors'
 
 "NERDTree plugin: Directory hierarchy
 Plug 'scrooloose/nerdtree'
+
+"Tag bar is a side bar that shows the functions avaialable in the file"
+Plug 'majutsushi/tagbar'
 
 "vim-gitgutter plugin: Git plugin
 Plug 'airblade/vim-gitgutter'
@@ -41,11 +47,23 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 
+" Vim-Searchindex: Show the index of the search
+Plug 'google/vim-searchindex'
+
+" HTML plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Auto-close
 Plug 'vim-scripts/HTML-AutoCloseTag'
 
 " Emmet plugin for auto completing html abbreviations
 Plug 'mattn/emmet-vim'
+
+" Plugin for jquery syntax
+Plug 'itspriddle/vim-jquery'
+
+" Plug that shows the color in css attibutes
+Plug 'ap/vim-css-color'
 
 call plug#end()
 
@@ -54,9 +72,6 @@ source ~/.zplugins/base/config.vim
 
 " Airline plugin configuration
 source ~/.zplugins/vim-airline/config.vim
-
-" Lightline plugin configuration
-" source ~/.zplugins/lightline/config.vim
 
 " FZF plugin configuration
 source ~/.zplugins/fzf/config.vim
@@ -78,3 +93,7 @@ source ~/.zplugins/incsearch/config.vim
 
 " Vim-CodeFmt: Autoformatter plugin
 source ~/.zplugins/vim-codefmt/config.vim
+
+" Configuration related to Emmet
+source ~/.zplugins/emmet-vim/config.vim
+

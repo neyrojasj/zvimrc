@@ -4,7 +4,8 @@ set encoding=utf-8
 
 " Color schemes i liked
 " murphy, slate, koehler
-colorscheme slate
+set background=dark
+colorscheme desert
 
 " Set the leader key
 let mapleader = ","
@@ -91,3 +92,9 @@ hi cursorline cterm=none term=none
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 highlight CursorLine guibg=#303000 ctermbg=234
+
+" CUSTOM RULES FOR NEW LINES AND LEADER KEY
+" =============================================================================
+" Quickly insert an empty new line without entering insert mode
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>

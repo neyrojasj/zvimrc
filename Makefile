@@ -14,9 +14,11 @@ all: install
 # ===========================================
 .install: .setup $(SOURCES)
 	cp -r vimrc.vim ${DST_FOLDER}/.vimrc
+	cp -r vimrc.vim ${DST_FOLDER}/.config/nvim/init.vim
 	mkdir -p ${DST_FOLDER}/.zplugins
 	cp -r zplugins/* ${DST_FOLDER}/.zplugins/
 	vim +'PlugInstall --sync' +qa
+	nvim +'PlugInstall --sync' +qa
 	touch .install
 
 install: .install

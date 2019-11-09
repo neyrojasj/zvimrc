@@ -1,6 +1,7 @@
 DST_FOLDER=${HOME}
 SOURCES := $(shell find . -name '*.vim')
 
+HASVIM := $(shell command vim --version 2> /dev/null)
 HASNVIM := $(shell command nvim --version 2> /dev/null)
 
 all: install
@@ -10,7 +11,6 @@ all: install
 .setup: setup.sh
 	chmod 755 ./setup.sh
 	./setup.sh "${DST_FOLDER}"
-	touch .setup
 
 # MAKE FILE RULE: INSTALL THE VIM CONFIG RULE
 # ===========================================
@@ -18,7 +18,12 @@ all: install
 	cp -r vimrc.vim ${DST_FOLDER}/.vimrc
 	mkdir -p ${DST_FOLDER}/.zplugins
 	cp -r zplugins/* ${DST_FOLDER}/.zplugins/
+ifdef HASVIM
 	vim +'PlugInstall --sync' +qa
+else
+	@echo "Vim is not installed"
+	exit 1
+endif
 ifdef HASNVIM
 	cp -r vimrc.vim ${DST_FOLDER}/.config/nvim/init.vim
 	nvim +'PlugInstall --sync' +qa

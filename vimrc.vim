@@ -50,6 +50,14 @@ Plug 'google/vim-glaive'
 " Vim-Searchindex: Show the index of the search
 Plug 'google/vim-searchindex'
 
+" Vim-Rainbow: It add individual colors to every
+" the parenthesis
+Plug 'frazrepo/vim-rainbow'
+
+" TagList: It display the different functions in the
+" current file. Open it with :Tlist or <leader>tl
+Plug 'vim-scripts/taglist.vim'
+
 " HTML plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -97,3 +105,8 @@ source ~/.zplugins/vim-codefmt/config.vim
 " Configuration related to Emmet
 source ~/.zplugins/emmet-vim/config.vim
 
+" Configuration related to Rainbow
+source ~/.zplugins/rainbow-vim/config.vim
+
+" Configuration related to TList
+source ~/.zplugins/tlist-vim/config.vim

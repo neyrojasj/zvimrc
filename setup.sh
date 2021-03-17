@@ -55,12 +55,27 @@ if [ ! -x "$(command -v yarn)" ]; then
     done
   fi
 fi
-echo "Installing external plugins"
-yarn global add prettier 2> /dev/null
-if [ $? -eq 0 ]; then
-  echo "Unable to add prettier to the global plugins using yarn"
-  exit 1
+
+if [ ! -x "$(command -v prettier)" ]; then
+  echo "Installing external plugins"
+  yarn global add prettier 2> /dev/null
+  if [ $? -eq 0 ]; then
+    echo "Unable to add prettier to the global plugins using yarn"
+    exit 1
+  fi
 fi
+
+if [ ! -f "${DST_FOLDER}/.vim_repos/languagetool" ]; then
+  echo "Installing Language tool"
+  echo "========================"
+  mkdir -p ${DST_FOLDER}/.vim_repos
+  curl -fLo ${DST_FOLDER}/.vim_repos/languagetool/download.zip --create-dirs https://www.languagetool.org/download/LanguageTool-stable.zip
+  if [ ! -f "${DST_FOLDER}/.vim_repos/languagetool/download.zip" ]; then
+    echo "Unable to download language tool"
+    exit 1
+  fi
+fi
+
 touch .setup
 # Return success
 exit 0

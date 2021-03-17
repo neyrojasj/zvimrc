@@ -29,6 +29,9 @@ Plug 'majutsushi/tagbar'
 "vim-gitgutter plugin: Git plugin
 Plug 'airblade/vim-gitgutter'
 
+"git blame: Plugin to execute git blame in file <leader+b>
+Plug 'zivyangll/git-blame.vim'
+
 " Asynchronous Lint Engine (ALE) plugin
 Plug 'w0rp/ale'
 
@@ -58,6 +61,9 @@ Plug 'frazrepo/vim-rainbow'
 " current file. Open it with :Tlist or <leader>tl
 Plug 'vim-scripts/taglist.vim'
 
+" Ack is a plugin to find any pattern in the proyect
+Plug 'mileszs/ack.vim'
+
 " HTML plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -72,6 +78,22 @@ Plug 'itspriddle/vim-jquery'
 
 " Plug that shows the color in css attibutes
 Plug 'ap/vim-css-color'
+
+" Plug for auto-completation and add documentation to the
+" functions
+Plug 'OmniSharp/omnisharp-vim'
+
+" Plugin to complete while you write code
+Plug 'valloric/youcompleteme'
+
+" RST Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" This is a plugin to visualize ReStrcture text
+Plug 'Rykka/riv.vim'
+
+" This plugin is used to check the grammar of the current file
+Plug 'rhysd/vim-grammarous'
 
 call plug#end()
 
@@ -92,6 +114,9 @@ source ~/.zplugins/nerdtree/config.vim
 
 " GitGutter configuration
 source ~/.zplugins/vim-gitgutter/config.vim
+
+" GitGutter configuration
+source ~/.zplugins/git-blame/config.vim
 
 " ALE configuration
 source ~/.zplugins/ale/config.vim

@@ -1,4 +1,4 @@
-let $PLUG_DIR = '$HOME/.vim/.zplugins/plugged'
+let $PLUG_DIR = '$HOME/.vim/zplugins/plugged'
 
 " PLUGING INSTALLATION
 """""""""""""""""""""""""""
@@ -103,40 +103,40 @@ Plug 'rhysd/vim-grammarous'
 call plug#end()
 
 " Source the base and common configuration
-source ~/.zplugins/base/config.vim
+source ~/.vim/zplugins/base/config.vim
 
 " Airline plugin configuration
-source ~/.zplugins/vim-airline/config.vim
+source ~/.vim/zplugins/vim-airline/config.vim
 
 " FZF plugin configuration
-source ~/.zplugins/fzf/config.vim
+source ~/.vim/zplugins/fzf/config.vim
 
 " vim-multiple-cursors configuration
-source ~/.zplugins/vim-multiple-cursors/config.vim
+source ~/.vim/zplugins/vim-multiple-cursors/config.vim
 
 " nerdtree configuration
-source ~/.zplugins/nerdtree/config.vim
+source ~/.vim/zplugins/nerdtree/config.vim
 
 " GitGutter configuration
-source ~/.zplugins/vim-gitgutter/config.vim
+source ~/.vim/zplugins/vim-gitgutter/config.vim
 
 " GitGutter configuration
-source ~/.zplugins/git-blame/config.vim
+source ~/.vim/zplugins/git-blame/config.vim
 
 " ALE configuration
-source ~/.zplugins/ale/config.vim
+source ~/.vim/zplugins/ale/config.vim
 
 " incsearch configuration
-source ~/.zplugins/incsearch/config.vim
+source ~/.vim/zplugins/incsearch/config.vim
 
 " Vim-CodeFmt: Autoformatter plugin
-source ~/.zplugins/vim-codefmt/config.vim
+source ~/.vim/zplugins/vim-codefmt/config.vim
 
 " Configuration related to Emmet
-source ~/.zplugins/emmet-vim/config.vim
+source ~/.vim/zplugins/emmet-vim/config.vim
 
 " Configuration related to Rainbow
-source ~/.zplugins/rainbow-vim/config.vim
+source ~/.vim/zplugins/rainbow-vim/config.vim
 
 " Configuration related to TList
-source ~/.zplugins/tlist-vim/config.vim
+source ~/.vim/zplugins/tlist-vim/config.vim

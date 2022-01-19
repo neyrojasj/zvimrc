@@ -17,8 +17,8 @@ all: install
 .install: .setup $(SOURCES)
 	cp -r vimrc.vim ${DST_FOLDER}/.vimrc
 	mkdir -p ${DST_FOLDER}/.vim
-	mkdir -p ${DST_FOLDER}/.vim/.zplugins
-	cp -r zplugins/* ${DST_FOLDER}/.vim/.zplugins/
+	mkdir -p ${DST_FOLDER}/.vim/zplugins
+	cp -r zplugins/* ${DST_FOLDER}/.vim/zplugins/
 ifdef HASVIM
 	vim +'PlugInstall --sync' +qa
 else
@@ -36,7 +36,7 @@ install: .install
 # MAKE FILE RULE: UNINSTALL THE VIM CONFIG RULE
 # =============================================
 .uninstall: ${DST_FOLDER}/.vimrc
-	rm -rf ${DST_FOLDER}/.vim/.zplugins
+	rm -rf ${DST_FOLDER}/.vim/zplugins
 	rm ${DST_FOLDER}/.vimrc
 	rm .install
 

@@ -2,6 +2,9 @@
 scriptencoding utf-8
 set encoding=utf-8
 
+" set the backspace to delete normally
+set backspace=indent,eol,start
+
 " Color schemes i liked
 " murphy, slate, koehler
 set background=dark

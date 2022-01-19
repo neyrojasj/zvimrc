@@ -59,6 +59,11 @@ Plug 'frazrepo/vim-rainbow'
 
 " TagList: It display the different functions in the
 " current file. Open it with :Tlist or <leader>tl
+" To generate the tags run this command: ctags -R .
+" Commands:
+"   :tag <function> => to to definition
+"   Ctrl+] => go to definitiion
+"   Ctrl+T => go to previuos place before jumping
 Plug 'vim-scripts/taglist.vim'
 
 " Ack is a plugin to find any pattern in the proyect
@@ -84,7 +89,7 @@ Plug 'ap/vim-css-color'
 Plug 'OmniSharp/omnisharp-vim'
 
 " Plugin to complete while you write code
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
 
 " RST Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""

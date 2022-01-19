@@ -35,7 +35,7 @@ if [ ! -x "$(command -v yarn)" ]; then
   echo "Installing Yarn"
   echo "==============="
   if [ "${MACHINE}" == "MAC" ]; then
-    sudo brew install yarn 2> /dev/null
+    brew install yarn 2> /dev/null
     if [ ! -x "$(command -v yarn)" ]; then
       echo "Unable to install yarn using brew"
       exit 1
@@ -58,7 +58,7 @@ fi
 
 if [ ! -x "$(command -v prettier)" ]; then
   echo "Installing external plugins"
-  yarn global add prettier 2> /dev/null
+  yarn add prettier 2> /dev/null
   if [ $? -eq 0 ]; then
     echo "Unable to add prettier to the global plugins using yarn"
     exit 1

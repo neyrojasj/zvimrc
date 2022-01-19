@@ -1,4 +1,4 @@
-let $PLUG_DIR = '$HOME/.zplugins/plugged'
+let $PLUG_DIR = '$HOME/.vim/.zplugins/plugged'
 
 " PLUGING INSTALLATION
 """""""""""""""""""""""""""

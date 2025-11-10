@@ -64,6 +64,9 @@ Plug 'jiangmiao/auto-pairs'
 " Uncomment the line below if you have node.js installed
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" GitHub Copilot: AI pair programmer
+Plug 'github/copilot.vim'
+
 " Indent liner: Show lines per idepention
 Plug 'Yggdroot/indentLine'
 
@@ -178,3 +181,6 @@ source ~/.vim/zplugins/indentLine/config.vim
 
 " Configuration related to DevIcons
 source ~/.vim/zplugins/devicons/config.vim
+
+" Configuration related to GitHub Copilot
+source ~/.vim/zplugins/copilot/config.vim

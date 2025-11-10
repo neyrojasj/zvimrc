@@ -31,6 +31,31 @@ if [ ! -f "${DST_FOLDER}/.vim/autoload/plug.vim" ]; then
   fi
 fi
 
+# Create symlinks for plugin configurations
+echo "Setting up plugin configurations"
+echo "================================="
+mkdir -p ${DST_FOLDER}/.vim/zplugins
+
+# Get the directory where this script is located (zvimrc repository)
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Create symlinks for all zplugin configurations
+if [ -d "${SCRIPT_DIR}/zplugins" ]; then
+  for plugin_dir in ${SCRIPT_DIR}/zplugins/*/; do
+    if [ -d "$plugin_dir" ]; then
+      plugin_name=$(basename "$plugin_dir")
+      # Remove existing symlink or directory if it exists
+      rm -rf "${DST_FOLDER}/.vim/zplugins/${plugin_name}"
+      # Create new symlink
+      ln -sf "${plugin_dir}" "${DST_FOLDER}/.vim/zplugins/${plugin_name}"
+      echo "Linked ${plugin_name} configuration"
+    fi
+  done
+  echo "Plugin configurations linked successfully"
+else
+  echo "Warning: zplugins directory not found in ${SCRIPT_DIR}"
+fi
+
 if [ ! -x "$(command -v yarn)" ]; then
   echo "Installing Yarn"
   echo "==============="

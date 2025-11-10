@@ -29,12 +29,12 @@ A comprehensive, beautiful, and productive Vim configuration that transforms Vim
 # 1. Clone the repository
 git clone https://github.com/neyrojasj/zvimrc.git ~/.vim/zvimrc
 
-# 2. Run setup script (installs dependencies)
+# 2. Run setup script (installs dependencies and creates symlinks)
 cd ~/.vim/zvimrc
 ./setup.sh $HOME
 
 # 3. Create symlink to vimrc
-ln -s ~/.vim/zvimrc/vimrc.vim ~/.vimrc
+ln -sf ~/.vim/zvimrc/vimrc.vim ~/.vimrc
 
 # 4. Open Vim and install plugins
 vim +PlugInstall +qall
@@ -182,20 +182,16 @@ cd ~/.vim/zvimrc
 # 3. Make setup script executable
 chmod +x setup.sh
 
-# 4. Run setup script (automatically installs vim-plug and dependencies)
+# 4. Run setup script (automatically installs vim-plug, creates symlinks, and dependencies)
 ./setup.sh $HOME
 
 # 5. Create symbolic link to your vimrc
 ln -sf ~/.vim/zvimrc/vimrc.vim ~/.vimrc
 
-# 6. Create the zplugins directory in ~/.vim (if not exists)
-mkdir -p ~/.vim/zplugins
-ln -sf ~/.vim/zvimrc/zplugins/* ~/.vim/zplugins/
-
-# 7. Open Vim and install all plugins
+# 6. Open Vim and install all plugins
 vim +PlugInstall +qall
 
-# 8. Restart Vim
+# 7. Restart Vim
 vim
 ```
 
@@ -245,10 +241,11 @@ The `setup.sh` script automatically:
 1. Detects your operating system (Linux/macOS)
 2. Installs `curl` if not present
 3. Downloads and installs Vim-Plug
-4. Installs Node.js and Yarn
-5. Installs system utilities (xclip, prettier)
-6. Downloads LanguageTool for grammar checking
-7. Creates necessary directories
+4. **Creates symlinks for all plugin configurations** (including Copilot)
+5. Installs Node.js and Yarn
+6. Installs system utilities (xclip, prettier)
+7. Downloads LanguageTool for grammar checking
+8. Creates necessary directories
 
 ---
 
@@ -1132,6 +1129,32 @@ F8 (Tagbar)
    sudo apt install vim-gtk3
    ```
 3. On macOS, use MacVim or ensure Vim is built with clipboard
+
+### Configuration File Not Found (E484 Error)
+
+**Problem**: Error message like `E484: Can't open file /Users/marco/.vim/zplugins/copilot/config.vim`
+
+**Solution**:
+This error means the plugin configuration symlinks are not set up correctly. This can happen if you:
+- Pulled new updates that added new plugins (like Copilot)
+- Didn't run the setup script initially
+- Manually installed without creating symlinks
+
+**Fix it by running:**
+```bash
+# Option 1: Re-run the setup script (recommended)
+cd ~/.vim/zvimrc
+./setup.sh $HOME
+
+# Option 2: Manually create symlinks for all plugins
+mkdir -p ~/.vim/zplugins
+ln -sf ~/.vim/zvimrc/zplugins/* ~/.vim/zplugins/
+
+# Option 3: Create symlink for just the missing plugin (e.g., copilot)
+ln -sf ~/.vim/zvimrc/zplugins/copilot ~/.vim/zplugins/copilot
+```
+
+After creating the symlinks, restart Vim and the error should be resolved.
 
 ### GitHub Copilot Not Working
 

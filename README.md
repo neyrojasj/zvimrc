@@ -43,6 +43,10 @@ vim +PlugInstall +qall
 sudo apt-get install fonts-powerline  # Ubuntu/Debian
 # or
 brew install font-hack-nerd-font      # macOS
+
+# 6. (Optional) Setup GitHub Copilot
+vim
+# In Vim, run: :Copilot setup
 ```
 
 **That's it!** Open Vim and enjoy your new IDE setup.
@@ -74,6 +78,7 @@ brew install font-hack-nerd-font      # macOS
 - **Auto Directory Switching**: Automatically change to project root
 
 #### Code Intelligence & Editing
+- **GitHub Copilot**: AI-powered code completion and suggestions
 - **ALE (Asynchronous Lint Engine)**: Real-time linting and error checking
 - **Tagbar**: Code structure overview showing functions, classes, variables
 - **Auto-completion**: Built-in omnifunc completion for multiple languages
@@ -133,9 +138,9 @@ Before installation, ensure you have the following:
   ```
 
 ### Recommended
-- **Node.js & npm/yarn** (for certain plugins like CoC)
+- **Node.js 16+ & npm/yarn** (required for GitHub Copilot, optional for CoC)
   ```bash
-  node --version
+  node --version  # Should be 16.x or higher for Copilot
   npm --version
   ```
 - **Python 3** (for some plugins)
@@ -358,6 +363,38 @@ Open Vim and run these commands:
 :ALEInfo
 ```
 
+### 5. GitHub Copilot Setup (Optional)
+
+If you have a GitHub Copilot subscription:
+
+1. **Ensure Node.js 16+ is installed**:
+   ```bash
+   node --version  # Should be 16.x or higher
+   ```
+
+2. **Open Vim and authenticate**:
+   ```vim
+   :Copilot setup
+   ```
+
+3. **Follow the authentication flow**:
+   - A browser window will open
+   - Log in to your GitHub account
+   - Authorize GitHub Copilot for Vim
+   - Enter the provided code
+
+4. **Verify Copilot is working**:
+   ```vim
+   :Copilot status
+   ```
+
+5. **Start coding**: Copilot will automatically suggest completions as you type
+   - Press `Tab` to accept suggestions
+   - Press `Alt+]` to see alternative suggestions
+   - Press `Ctrl+]` to dismiss suggestions
+
+**Note**: GitHub Copilot requires an active subscription. Visit [github.com/features/copilot](https://github.com/features/copilot) for pricing and plans.
+
 ---
 
 ## Keyboard Shortcuts Reference
@@ -535,6 +572,29 @@ Open Vim and run these commands:
 | `Ctrl+x Ctrl+l` | Insert | Whole line completion |
 | `Ctrl+n` | Insert | Next completion suggestion |
 | `Ctrl+p` | Insert | Previous completion suggestion |
+
+---
+
+### GitHub Copilot (AI Code Completion)
+
+| Shortcut | Mode | Action |
+|----------|------|--------|
+| `Tab` | Insert | Accept Copilot suggestion |
+| `Ctrl+J` | Insert | Accept Copilot suggestion (alternative) |
+| `Alt+]` | Insert | Next suggestion |
+| `Alt+[` | Insert | Previous suggestion |
+| `Ctrl+]` | Insert | Dismiss suggestion |
+| `Ctrl+\` | Insert | Request alternative suggestions |
+| `,cp` | Normal | Open Copilot panel |
+| `,ce` | Normal | Enable Copilot |
+| `,cd` | Normal | Disable Copilot |
+| `,cs` | Normal | Check Copilot status |
+| `:Copilot setup` | Command | Authenticate with GitHub |
+| `:Copilot enable` | Command | Enable Copilot |
+| `:Copilot disable` | Command | Disable Copilot |
+| `:Copilot status` | Command | Check authentication status |
+
+**Note**: Requires Node.js 16+ and GitHub Copilot subscription. Run `:Copilot setup` after installation to authenticate.
 
 ---
 
@@ -772,6 +832,7 @@ Then run `:PlugClean` in Vim.
 ### Code Intelligence
 | Plugin | Description | Config File |
 |--------|-------------|-------------|
+| copilot.vim | GitHub Copilot AI code completion | `zplugins/copilot/config.vim` |
 | ale | Asynchronous linting | `zplugins/ale/config.vim` |
 | tagbar | Code structure overview | `zplugins/tagbar/config.vim` |
 | taglist | Function/class browser | `zplugins/tlist-vim/config.vim` |
@@ -1071,6 +1132,54 @@ F8 (Tagbar)
    sudo apt install vim-gtk3
    ```
 3. On macOS, use MacVim or ensure Vim is built with clipboard
+
+### GitHub Copilot Not Working
+
+**Problem**: Copilot doesn't show suggestions
+
+**Solution**:
+1. Check Copilot status:
+   ```vim
+   :Copilot status
+   ```
+2. Verify Node.js version (requires 16+):
+   ```bash
+   node --version
+   ```
+3. Authenticate if not already done:
+   ```vim
+   :Copilot setup
+   ```
+4. Ensure you have an active Copilot subscription
+5. Try restarting Copilot:
+   ```vim
+   :Copilot disable
+   :Copilot enable
+   ```
+6. Check for error messages:
+   ```vim
+   :messages
+   ```
+
+**Problem**: Copilot suggestions are slow
+
+**Solution**:
+1. Check your internet connection (Copilot requires network access)
+2. Disable other completion plugins that might conflict
+3. Check Node.js performance on your system
+
+**Problem**: Tab key not accepting suggestions
+
+**Solution**:
+1. Check for key mapping conflicts:
+   ```vim
+   :verbose imap <Tab>
+   ```
+2. Use alternative shortcut `Ctrl+J` to accept
+3. Verify copilot config is loaded:
+   ```vim
+   :scriptnames | grep copilot
+   ```
 
 ### Setup Script Fails
 

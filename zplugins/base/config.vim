@@ -6,9 +6,25 @@ set encoding=utf-8
 set backspace=indent,eol,start
 
 " Color schemes i liked
-" murphy, slate, koehler
+" murphy, slate, koehler, gruvbox, dracula, onedark, nord
 set background=dark
-colorscheme desert
+
+" Enable 24-bit true colors if supported
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Use gruvbox as the default color scheme (change to dracula, onedark, nord, etc.)
+try
+  colorscheme gruvbox
+catch
+  colorscheme desert
+endtry
+
+" Set contrast for gruvbox
+let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_improved_strings = 1
+let g:gruvbox_improved_warnings = 1
 
 " Set the leader key
 let mapleader = ","
@@ -105,3 +121,85 @@ highlight CursorLine guibg=#303000 ctermbg=234
 " Quickly insert an empty new line without entering insert mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
+
+" IDE-LIKE ENHANCEMENTS
+" =============================================================================
+
+" Enable syntax highlighting
+syntax enable
+
+" Show matching brackets
+set showmatch
+
+" Better command-line completion
+set wildmenu
+set wildmode=longest:full,full
+set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
+
+" Always show the signcolumn (for git gutter, etc.)
+set signcolumn=yes
+
+" Update time for better git gutter responsiveness
+set updatetime=100
+
+" Better split window behavior
+set splitbelow
+set splitright
+
+" Easier split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Enable code folding
+set foldmethod=indent
+set foldlevel=99
+" Toggle fold with space
+nnoremap <space> za
+
+" Persistent undo
+if has('persistent_undo')
+  set undofile
+  set undodir=$HOME/.vim/undodir
+  if !isdirectory(&undodir)
+    call mkdir(&undodir, 'p')
+  endif
+endif
+
+" Better search settings
+set ignorecase
+set smartcase
+set incsearch
+
+" Show line and column in status bar
+set ruler
+
+" Show command in bottom bar
+set showcmd
+
+" Redraw only when needed (performance)
+set lazyredraw
+
+" Better scrolling
+set scrolloff=8
+set sidescrolloff=8
+
+" Show absolute line number on current line, relative on others (optional)
+" Uncomment below to enable relative line numbers
+" set relativenumber
+" augroup numbertoggle
+"   autocmd!
+"   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+"   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+" augroup END
+
+" Improve performance for large files
+set synmaxcol=200
+
+" Clipboard integration (use system clipboard)
+if has('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
+endif

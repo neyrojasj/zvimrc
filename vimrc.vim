@@ -12,6 +12,10 @@ Plug 'vim-airline/vim-airline-themes'
 " Install the color palette
 Plug 'altercation/vim-colors-solarized'
 Plug 'gosukiwi/vim-atom-dark'
+Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'joshdick/onedark.vim'
+Plug 'arcticicestudio/nord-vim'
 
 " FZF plugin: Search files
 Plug 'junegunn/fzf'
@@ -34,6 +38,31 @@ Plug 'zivyangll/git-blame.vim'
 
 " Asynchronous Lint Engine (ALE) plugin
 Plug 'w0rp/ale'
+
+" Better syntax highlighting for multiple languages
+Plug 'sheerun/vim-polyglot'
+
+" Dev Icons: File icons for NERDTree and airline
+Plug 'ryanoasis/vim-devicons'
+
+" Startify: Fancy start screen
+Plug 'mhinz/vim-startify'
+
+" Smooth scrolling
+Plug 'psliwka/vim-smoothie'
+
+" Better commenting
+Plug 'tpope/vim-commentary'
+
+" Surround: Easily change surrounding quotes, brackets, etc.
+Plug 'tpope/vim-surround'
+
+" Auto-pairs: Auto close brackets and quotes
+Plug 'jiangmiao/auto-pairs'
+
+" Conquer of Completion (CoC): Better code completion
+" Uncomment the line below if you have node.js installed
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Indent liner: Show lines per idepention
 Plug 'Yggdroot/indentLine'
@@ -140,3 +169,12 @@ source ~/.vim/zplugins/rainbow-vim/config.vim
 
 " Configuration related to TList
 source ~/.vim/zplugins/tlist-vim/config.vim
+
+" Configuration related to Startify
+source ~/.vim/zplugins/startify/config.vim
+
+" Configuration related to IndentLine
+source ~/.vim/zplugins/indentLine/config.vim
+
+" Configuration related to DevIcons
+source ~/.vim/zplugins/devicons/config.vim

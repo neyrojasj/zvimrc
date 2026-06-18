@@ -17,6 +17,7 @@ all: install
 .install: .setup $(SOURCES)
 	cp -r vimrc.vim ${DST_FOLDER}/.vimrc
 	mkdir -p ${DST_FOLDER}/.vim
+	rm -rf ${DST_FOLDER}/.vim/zplugins
 	mkdir -p ${DST_FOLDER}/.vim/zplugins
 	cp -r zplugins/* ${DST_FOLDER}/.vim/zplugins/
 ifdef HASVIM

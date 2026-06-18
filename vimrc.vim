@@ -75,8 +75,6 @@ Plug 'google/vim-searchindex'
 " ── Integrated terminal (VS Code-like) ────────────────────────────────────────
 Plug 'voldikss/vim-floaterm'            " Toggle terminal (like VS Code Ctrl+`)
 
-" ── Keybinding hints (VS Code-like command palette feel) ─────────────────────
-Plug 'liuchengxu/vim-which-key'
 
 " ── Formatting ────────────────────────────────────────────────────────────────
 Plug 'google/vim-maktaba'
@@ -132,8 +130,6 @@ source ~/.vim/zplugins/vim-floaterm/config.vim
 " Undo tree
 source ~/.vim/zplugins/undotree/config.vim
 
-" Keybinding hints (load after all leader mappings are defined)
-source ~/.vim/zplugins/vim-which-key/config.vim
 
 " Visual
 source ~/.vim/zplugins/incsearch/config.vim

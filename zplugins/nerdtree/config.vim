@@ -42,15 +42,9 @@ let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
 
 " ── Auto-open / auto-close behavior ──────────────────────────────────────────
 
-" Open NERDTree when vim starts with a directory argument
-autocmd StdinReadPre * let s:std_in = 1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in")
-  \ | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" Always open NERDTree on startup, focus stays in the editor window
+autocmd VimEnter * NERDTree | wincmd p
 
 " Close vim if NERDTree is the only window left
 autocmd BufEnter * if winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree() | q | endif
-
-" Sync NERDTree with open file when entering a buffer
-" (uncomment to enable — can be slow on large projects)
-" autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
 

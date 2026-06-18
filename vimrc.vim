@@ -1,186 +1,158 @@
 let $PLUG_DIR = '$HOME/.vim/zplugins/plugged'
 
-" PLUGING INSTALLATION
+" PLUGIN INSTALLATION
 """""""""""""""""""""""""""
 call plug#begin($PLUG_DIR)
 
-" Install airline plugin
-" It is a plugin that incorporates a status bar at the bottom
+" ── Status bar ────────────────────────────────────────────────────────────────
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Install the color palette
+" ── Color Schemes ─────────────────────────────────────────────────────────────
 Plug 'altercation/vim-colors-solarized'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'tomasiser/vim-code-dark'           " VS Code Dark+ theme
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }  " Catppuccin theme
 
-" FZF plugin: Search files
+" ── File navigation ───────────────────────────────────────────────────────────
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-
-" vim-multiple-cursors: Multiple line selector
-Plug 'terryma/vim-multiple-cursors'
-
-"NERDTree plugin: Directory hierarchy
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'      " Git status in file tree (VS Code-like)
 
-"Tag bar is a side bar that shows the functions avaialable in the file"
+" ── Multiple cursors ──────────────────────────────────────────────────────────
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}  " Ctrl+D select (VS Code-like)
+
+" ── Tags / symbols ────────────────────────────────────────────────────────────
 Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/taglist.vim'
 
-"vim-gitgutter plugin: Git plugin
+" ── Git integration ───────────────────────────────────────────────────────────
 Plug 'airblade/vim-gitgutter'
-
-"git blame: Plugin to execute git blame in file <leader+b>
 Plug 'zivyangll/git-blame.vim'
+Plug 'tpope/vim-fugitive'               " Full git: blame, diff, log, commit
 
-" Asynchronous Lint Engine (ALE) plugin
+" ── LSP / IntelliSense (VS Code-like) ────────────────────────────────────────
+Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Requires Node.js 16+
+
+" ── Linting ───────────────────────────────────────────────────────────────────
 Plug 'w0rp/ale'
 
-" Better syntax highlighting for multiple languages
+" ── Syntax highlighting ───────────────────────────────────────────────────────
 Plug 'sheerun/vim-polyglot'
 
-" Dev Icons: File icons for NERDTree and airline
+" ── Icons ─────────────────────────────────────────────────────────────────────
 Plug 'ryanoasis/vim-devicons'
 
-" Startify: Fancy start screen
+" ── Start screen ──────────────────────────────────────────────────────────────
 Plug 'mhinz/vim-startify'
 
-" Smooth scrolling
-Plug 'psliwka/vim-smoothie'
+" ── Editing helpers ───────────────────────────────────────────────────────────
+Plug 'psliwka/vim-smoothie'             " Smooth scrolling
+Plug 'tpope/vim-commentary'             " Toggle comments (gcc / Ctrl+/)
+Plug 'tpope/vim-surround'               " Surround: quotes, brackets
+Plug 'jiangmiao/auto-pairs'             " Auto-close brackets and quotes
+Plug 'mbbill/undotree'                  " Undo history (VS Code timeline-like)
 
-" Better commenting
-Plug 'tpope/vim-commentary'
+" ── Visual enhancements ───────────────────────────────────────────────────────
+Plug 'Yggdroot/indentLine'              " Indent guide lines
+Plug 'frazrepo/vim-rainbow'             " Rainbow parentheses
+Plug 'RRethy/vim-illuminate'            " Highlight word under cursor (VS Code-like)
 
-" Surround: Easily change surrounding quotes, brackets, etc.
-Plug 'tpope/vim-surround'
-
-" Auto-pairs: Auto close brackets and quotes
-Plug 'jiangmiao/auto-pairs'
-
-" Conquer of Completion (CoC): Better code completion
-" Uncomment the line below if you have node.js installed
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" GitHub Copilot: AI pair programmer
+" ── AI pair programming ───────────────────────────────────────────────────────
 Plug 'github/copilot.vim'
 
-" Indent liner: Show lines per idepention
-Plug 'Yggdroot/indentLine'
-
-" incsearch plugin: Set the cursor into the search result
-" as you continue typing
+" ── Search ────────────────────────────────────────────────────────────────────
 Plug 'haya14busa/incsearch.vim'
-
-" Search in all the proyect feature with CtrlSF
 Plug 'dyng/ctrlsf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'google/vim-searchindex'
 
-" Vim-CodeFmt: Autoformatter plugin
+" ── Integrated terminal (VS Code-like) ────────────────────────────────────────
+Plug 'voldikss/vim-floaterm'            " Toggle terminal (like VS Code Ctrl+`)
+
+" ── Keybinding hints (VS Code-like command palette feel) ─────────────────────
+Plug 'liuchengxu/vim-which-key'
+
+" ── Formatting ────────────────────────────────────────────────────────────────
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 
-" Vim-Searchindex: Show the index of the search
-Plug 'google/vim-searchindex'
-
-" Vim-Rainbow: It add individual colors to every
-" the parenthesis
-Plug 'frazrepo/vim-rainbow'
-
-" TagList: It display the different functions in the
-" current file. Open it with :Tlist or <leader>tl
-" To generate the tags run this command: ctags -R .
-" Commands:
-"   :tag <function> => to to definition
-"   Ctrl+] => go to definitiion
-"   Ctrl+T => go to previuos place before jumping
-Plug 'vim-scripts/taglist.vim'
-
-" Ack is a plugin to find any pattern in the proyect
-Plug 'mileszs/ack.vim'
-
-" HTML plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Auto-close
+" ── HTML / CSS ────────────────────────────────────────────────────────────────
 Plug 'vim-scripts/HTML-AutoCloseTag'
-
-" Emmet plugin for auto completing html abbreviations
 Plug 'mattn/emmet-vim'
-
-" Plugin for jquery syntax
 Plug 'itspriddle/vim-jquery'
-
-" Plug that shows the color in css attibutes
 Plug 'ap/vim-css-color'
-
-" Plug for auto-completation and add documentation to the
-" functions
 Plug 'OmniSharp/omnisharp-vim'
 
-" Plugin to complete while you write code
-" Plug 'valloric/youcompleteme'
-
-" RST Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" This is a plugin to visualize ReStrcture text
+" ── RST / Markdown ────────────────────────────────────────────────────────────
 Plug 'Rykka/riv.vim'
-
-" This plugin is used to check the grammar of the current file
 Plug 'rhysd/vim-grammarous'
 
 call plug#end()
 
-" Source the base and common configuration
+" ──────────────────────────────────────────────────────────────────────────────
+" PLUGIN CONFIGURATION (order matters)
+" ──────────────────────────────────────────────────────────────────────────────
+
+" Base settings and keybindings (load first)
 source ~/.vim/zplugins/base/config.vim
 
-" Airline plugin configuration
+" Status bar
 source ~/.vim/zplugins/vim-airline/config.vim
 
-" FZF plugin configuration
+" File search
 source ~/.vim/zplugins/fzf/config.vim
 
-" vim-multiple-cursors configuration
-source ~/.vim/zplugins/vim-multiple-cursors/config.vim
+" Multiple cursors
+source ~/.vim/zplugins/vim-visual-multi/config.vim
 
-" nerdtree configuration
+" File explorer
 source ~/.vim/zplugins/nerdtree/config.vim
 
-" GitGutter configuration
+" Git
 source ~/.vim/zplugins/vim-gitgutter/config.vim
-
-" GitGutter configuration
 source ~/.vim/zplugins/git-blame/config.vim
+source ~/.vim/zplugins/vim-fugitive/config.vim
 
-" ALE configuration
+" LSP / IntelliSense
+source ~/.vim/zplugins/coc/config.vim
+
+" Linting
 source ~/.vim/zplugins/ale/config.vim
 
-" incsearch configuration
-source ~/.vim/zplugins/incsearch/config.vim
+" Integrated terminal
+source ~/.vim/zplugins/vim-floaterm/config.vim
 
-" Vim-CodeFmt: Autoformatter plugin
+" Undo tree
+source ~/.vim/zplugins/undotree/config.vim
+
+" Keybinding hints (load after all leader mappings are defined)
+source ~/.vim/zplugins/vim-which-key/config.vim
+
+" Visual
+source ~/.vim/zplugins/incsearch/config.vim
+source ~/.vim/zplugins/indentLine/config.vim
+source ~/.vim/zplugins/devicons/config.vim
+source ~/.vim/zplugins/rainbow-vim/config.vim
+source ~/.vim/zplugins/vim-illuminate/config.vim
+
+" Formatting
 source ~/.vim/zplugins/vim-codefmt/config.vim
 
-" Configuration related to Emmet
+" HTML/templates
 source ~/.vim/zplugins/emmet-vim/config.vim
 
-" Configuration related to Rainbow
-source ~/.vim/zplugins/rainbow-vim/config.vim
-
-" Configuration related to TList
+" Tags
 source ~/.vim/zplugins/tlist-vim/config.vim
 
-" Configuration related to Startify
+" Start screen
 source ~/.vim/zplugins/startify/config.vim
 
-" Configuration related to IndentLine
-source ~/.vim/zplugins/indentLine/config.vim
-
-" Configuration related to DevIcons
-source ~/.vim/zplugins/devicons/config.vim
-
-" Configuration related to GitHub Copilot
+" AI
 source ~/.vim/zplugins/copilot/config.vim

@@ -1,97 +1,109 @@
-" Enconding text
+" Encoding
 scriptencoding utf-8
 set encoding=utf-8
 
-" set the backspace to delete normally
+" Normal backspace behaviour
 set backspace=indent,eol,start
 
-" Color schemes i liked
-" murphy, slate, koehler, gruvbox, dracula, onedark, nord
-set background=dark
-
-" Enable 24-bit true colors if supported
+" 24-bit true-color support
 if (has("termguicolors"))
   set termguicolors
 endif
 
-" Use gruvbox as the default color scheme (change to dracula, onedark, nord, etc.)
+set background=dark
+
+" ── Theme ─────────────────────────────────────────────────────────────────────
+" Default: VS Code Dark+ (codedark). Switch below as you like:
+"   gruvbox | dracula | onedark | nord | catppuccin_mocha
 try
-  colorscheme gruvbox
+  colorscheme codedark
 catch
-  colorscheme desert
+  try
+    colorscheme onedark
+  catch
+    colorscheme desert
+  endtry
 endtry
 
-" Set contrast for gruvbox
-let g:gruvbox_contrast_dark = 'medium'
+" Gruvbox fine-tuning (used when switching manually)
+let g:gruvbox_contrast_dark    = 'medium'
 let g:gruvbox_improved_strings = 1
 let g:gruvbox_improved_warnings = 1
 
-" Set the leader key
+" OneDark italic comments
+let g:onedark_terminal_italics = 1
+
+" Leader key
 let mapleader = ","
 
 " Map the character that are not seeing
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
 
-" Set list replaces the hidden characters by a special char
-" For example: the space is replaced by "·"
-" set list
-
-" Add mouse integration
+" Mouse support
 set mouse=a
 
-" Change tabs by spaces
+" Tabs → 2 spaces (web dev default; override per filetype if needed)
 set tabstop=2 shiftwidth=2 expandtab
 
-" Remove all trailing whitespace
+" Strip trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
 
-" AUTOCOMPLETATION ENABLED
-" =============================================================================
-" To invoque this feature, type a base name and then: Ctrl+x and Ctrl+o
+" Filetype-based omni-completion
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
-" MARK MAX COLUMN LENGHT
-" =============================================================================
-
-" Color the 80th column and over that column
-" highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-" match OverLength /\%81v.\+/
-
-" Add only a line
+" 80-column guide
 highlight ColorColumn ctermbg=magenta
+set colorcolumn=80
 
-" =============================================================================
+" Spell checking for prose files
+au BufRead *.md,*.markdown,*.rst,*.txt setlocal spell
 
-" Enable spell checking for certain files
-au BufRead *.md setlocal spell
-au BufRead *.markdown setlocal spell
-au BufRead *.rst setlocal spell
-au BufRead *.ymal setlocal spell
-
-" Map F2 to copy the selected text into the clipboard
+" Clipboard (system clipboard)
 if has('macunix')
-  map <F2> : w !pbcopy
+  map <F2> :w !pbcopy<CR>
 else
-  map <F2> : w !xclip -selection clipboard
+  map <F2> :w !xclip -selection clipboard<CR>
+endif
+if has('unnamedplus')
+  set clipboard=unnamedplus
+else
+  set clipboard=unnamed
 endif
 
-" turn hybrid line numbers on
-" set number relativenumber
+" Line numbers
 set number
 
-" Highlight the searchs
+" Highlight search results
 set hlsearch
 
-" Map a combination to delete text and send it to the null yank register
+" ── VS Code-like keybindings ──────────────────────────────────────────────────
 
-" shortcut to delete in the black hole register
-vnoremap <leader>d "_d
+" Ctrl+P — Quick Open (search files)  → handled in fzf/config.vim
 
-" shortcut to paste but keeping the current register
-vnoremap <leader>p "_dP
+" Ctrl+B — Toggle sidebar / NERDTree (VS Code default)
+nnoremap <C-b> :NERDTreeToggle<CR>
 
-" Shorcuts to handle tabs
+" Ctrl+/ — Toggle comment on current line (VS Code default)
+" Note: <C-_> is how most terminals see Ctrl+/
+nnoremap <C-_> :Commentary<CR>
+vnoremap <C-_> :Commentary<CR>
+
+" gcc also works (vim-commentary native)
+
+" Alt+Up / Alt+Down — Move line/selection (VS Code default)
+nnoremap <A-Up>   :m .-2<CR>==
+nnoremap <A-Down> :m .+1<CR>==
+vnoremap <A-Up>   :m '<-2<CR>gv=gv
+vnoremap <A-Down> :m '>+1<CR>gv=gv
+
+" ── Split navigation (Ctrl+Arrow) ─────────────────────────────────────────────
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" ── Tab navigation ────────────────────────────────────────────────────────────
 map <Leader>tn :tabnew<CR>
 map <Leader>tc :tabclose<CR>
 map <Leader>tf :tabnext<CR>
@@ -107,55 +119,46 @@ map <Leader>t8 8gt
 map <Leader>t9 9gt
 
 map <C-S-Right> :tabnext<CR>
-map <C-S-Left> :tabprevious<CR>
+map <C-S-Left>  :tabprevious<CR>
 
-" Highlight the whole current line
+" ── Cursor line highlight ──────────────────────────────────────────────────────
 set cursorline
 hi cursorline cterm=none term=none
 autocmd WinEnter * setlocal cursorline
 autocmd WinLeave * setlocal nocursorline
 highlight CursorLine guibg=#303000 ctermbg=234
 
-" CUSTOM RULES FOR NEW LINES AND LEADER KEY
-" =============================================================================
-" Quickly insert an empty new line without entering insert mode
+" ── Leader convenience maps ───────────────────────────────────────────────────
+" Insert empty lines without entering insert mode
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
-" IDE-LIKE ENHANCEMENTS
-" =============================================================================
+" Delete to black-hole register (no clipboard pollution)
+vnoremap <leader>d "_d
 
-" Enable syntax highlighting
+" Paste without losing register
+vnoremap <leader>p "_dP
+
+" ── IDE defaults ──────────────────────────────────────────────────────────────
 syntax enable
-
-" Show matching brackets
-set showmatch
-
-" Better command-line completion
+set showmatch                    " flash matching bracket
 set wildmenu
 set wildmode=longest:full,full
 set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
 
-" Always show the signcolumn (for git gutter, etc.)
+" Always show sign column (git gutter, CoC diagnostics)
 set signcolumn=yes
 
-" Update time for better git gutter responsiveness
+" Faster update for git gutter / CoC
 set updatetime=100
 
-" Better split window behavior
+" Splits open below and to the right (VS Code-like)
 set splitbelow
 set splitright
 
-" Easier split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Enable code folding
+" Code folding (Space to toggle)
 set foldmethod=indent
 set foldlevel=99
-" Toggle fold with space
 nnoremap <space> za
 
 " Persistent undo
@@ -167,39 +170,19 @@ if has('persistent_undo')
   endif
 endif
 
-" Better search settings
+" Search
 set ignorecase
 set smartcase
 set incsearch
 
-" Show line and column in status bar
+" Status / command bar
 set ruler
-
-" Show command in bottom bar
 set showcmd
-
-" Redraw only when needed (performance)
 set lazyredraw
 
-" Better scrolling
+" Keep context around cursor
 set scrolloff=8
 set sidescrolloff=8
 
-" Show absolute line number on current line, relative on others (optional)
-" Uncomment below to enable relative line numbers
-" set relativenumber
-" augroup numbertoggle
-"   autocmd!
-"   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-"   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-" augroup END
-
-" Improve performance for large files
+" Performance
 set synmaxcol=200
-
-" Clipboard integration (use system clipboard)
-if has('unnamedplus')
-  set clipboard=unnamedplus
-else
-  set clipboard=unnamed
-endif
